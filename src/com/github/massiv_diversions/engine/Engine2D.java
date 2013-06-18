@@ -9,6 +9,7 @@ public class Engine2D {
 
 	private ControlData cd;
 	private EngineDetails ed;
+	private Graphics2D graphics;
 	private JFrame frame;
 	private JPanel panel;
 	private StateManager sm;
@@ -20,14 +21,17 @@ public class Engine2D {
 		this.ed = ed;
 		this.sm = sm;
 
+		// setup panel
+		panel = new JPanel();
+		panel.setSize(ed.size());
+
 		// setup frame
 		frame = new JFrame();
-		frame.setSize(ed.width(), ed.height());
 		frame.setTitle(ed.title());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(new ControlListener());
-
-		// setup panel
+		frame.add(panel);
+		frame.pack();
 
 		// setup timer
 		timer = new Timer(ed.delay(), new FrameListener());
@@ -36,12 +40,15 @@ public class Engine2D {
 
 	public void start() {
 		frame.setVisible(true);
+		graphics = (Graphics2D) panel.getGraphics();
 		timer.start();
 	}
 
-	public void frame() {
+	private void frame() {
 		sm.update(cd);
-		sm.render((Graphics2D) panel.getGraphics());
+		graphics.clearRect(0, 0, ed.width(), ed.height());
+		panel.setSize(ed.size());
+		sm.render(graphics);
 		sm.next();
 	}
 
