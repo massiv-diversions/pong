@@ -8,7 +8,7 @@
 
 import java.util.Random;
 
-Public class PongBall implements PhysObj{
+public class PongBall implements PhysObj{
 	
 	private int posX;
 	private int posY;
