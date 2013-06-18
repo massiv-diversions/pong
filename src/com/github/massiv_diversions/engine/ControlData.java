@@ -8,7 +8,8 @@ public class ControlData {
 	private Map<Integer, Boolean> keyStates;
 
 	public ControlData(int... keyValues) {
-		keyStates = new HashMap<Integer, Boolean>();
+		keyStates = new HashMap<Integer, Boolean>(
+				(int) (keyValues.length / 0.75) + 1);
 		for (int i : keyValues)
 			keyStates.put(i, false);
 	}
