@@ -1,7 +1,10 @@
 package com.github.massiv_diversions.engine;
 
+import java.awt.Dimension;
+
 public class EngineDetails {
 
+	private final Dimension size;
 	private final int delay;
 	private final int height;
 	private final int width;
@@ -13,7 +16,10 @@ public class EngineDetails {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		size = new Dimension(width, height);
 	}
+
+	public Dimension size() { return size; }
 
 	public int delay() { return delay; }
 
