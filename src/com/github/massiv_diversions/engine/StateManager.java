@@ -4,11 +4,9 @@ import java.awt.Graphics2D;
 
 public class StateManager {
 
-	private EngineDetails ed;
 	private GameState state;
 
-	public StateManager(EngineDetails ed, GameState initialState) {
-		this.ed = ed;
+	public StateManager(GameState initialState) {
 		this.state = initialState;
 	}
 
@@ -17,7 +15,7 @@ public class StateManager {
 	protected void render(Graphics2D g) { state.render(g); }
 
 	protected void next() {
-		GameState nextState = state.next(ed);
+		GameState nextState = state.next();
 		if (nextState != null)
 			state = nextState;
 	}

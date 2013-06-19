@@ -8,6 +8,6 @@ public interface GameState {
 
 	void render(Graphics2D g);
 
-	GameState next(EngineDetails ed);
+	GameState next();
 
 }
