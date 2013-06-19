@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
@@ -21,16 +22,17 @@ public class TestState0 implements GameState {
 		boolean downArrow = cd.keyDown(KeyEvent.VK_DOWN);
 		if (upArrow && !downArrow) {
 			System.out.println("up");
-			x++;
+			y++;
 		} else if (!upArrow && downArrow) {
 			System.out.println("down");
-			x--;
+			y--;
 		}
 	}
 
 	@Override
 	public void render(Graphics2D g) {
-		g.fillOval(x - 5, y - 5, x + 5, y + 5);
+		g.setColor(Color.BLUE);
+		g.fillOval(x - 3, y - 3, 7, 7);
 	}
 
 	@Override
