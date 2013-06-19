@@ -23,6 +23,7 @@ public class Engine2D {
 
 		// setup panel
 		panel = new JPanel();
+		panel.setBackground(Color.BLACK);
 		panel.setSize(ed.size());
 
 		// setup frame
@@ -46,8 +47,8 @@ public class Engine2D {
 
 	private void frame() {
 		sm.update(cd);
-		graphics.clearRect(0, 0, ed.width(), ed.height());
 		panel.setSize(ed.size());
+		graphics.clearRect(0, 0, ed.width(), ed.height());
 		sm.render(graphics);
 		sm.next();
 	}
