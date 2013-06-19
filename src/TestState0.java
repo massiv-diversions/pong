@@ -25,12 +25,19 @@ public class TestState0 implements GameState {
 	public void update(ControlData cd) {
 		boolean upArrow = cd.keyDown(KeyEvent.VK_UP);
 		boolean downArrow = cd.keyDown(KeyEvent.VK_DOWN);
-		if (upArrow && !downArrow) {
-			System.out.println("up");
+		boolean leftArrow = cd.keyDown(KeyEvent.VK_LEFT);
+		boolean rightArrow = cd.keyDown(KeyEvent.VK_RIGHT);
+
+		if (upArrow && !downArrow && y > 0) {
 			y--;
-		} else if (!upArrow && downArrow) {
-			System.out.println("down");
+		} else if (!upArrow && downArrow && y < ed.height()) {
 			y++;
+		}
+
+		if (leftArrow && !rightArrow && x > 0) {
+			x--;
+		} else if (!leftArrow && rightArrow && y < ed.width()) {
+			x++;
 		}
 	}
 
