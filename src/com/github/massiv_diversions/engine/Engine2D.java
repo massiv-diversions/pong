@@ -2,6 +2,7 @@ package com.github.massiv_diversions.engine;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
 
 import javax.swing.*;
 
@@ -24,7 +25,7 @@ public class Engine2D {
 		// setup panel
 		panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setSize(ed.size());
+		panel.setPreferredSize(ed.size());
 
 		// setup frame
 		frame = new JFrame();
@@ -47,8 +48,12 @@ public class Engine2D {
 
 	private void frame() {
 		sm.update(cd);
+		Rectangle2D toClear = panel.getVisibleRect();
+		int clearWidth = (int) toClear.getWidth();
+		int clearHeight = (int)toClear.getHeight();
+		graphics.clearRect(0, 0, clearWidth, clearHeight);
 		panel.setSize(ed.size());
-		graphics.clearRect(0, 0, ed.width(), ed.height());
+		frame.pack();
 		sm.render(graphics);
 		sm.next();
 	}
