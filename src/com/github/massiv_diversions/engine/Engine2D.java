@@ -24,7 +24,6 @@ public class Engine2D {
 
 		// setup panel
 		panel = new JPanel();
-		panel.setBackground(Color.BLACK);
 		panel.setPreferredSize(ed.size());
 
 		// setup frame
